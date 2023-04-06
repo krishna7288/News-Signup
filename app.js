@@ -4,6 +4,7 @@ const request = require("request");
 const https = require("https");
 
 const app = express(); 
+const port = 3000;
 app.use(express.static("public"));
 app.use(bodyparser.urlencoded({urlencoded: true}));
 
@@ -30,7 +31,7 @@ app.post("/", function(req, res){
     const url = 'https://us21.api.mailchimp.com/3.0/lists/1b4c29b01a';
     const options = {
         method : "post",
-        auth : "krishna:c85c38d7b7794bd060962a03a41c8e9a-us21"
+        auth : "krishna:02e116c997ba04662afcd33d6c32c6af-us21"
     };
 
     const request = https.request(url, options, function(response){
@@ -55,7 +56,7 @@ app.post("/failure", function(req,res){
     res.redirect("/")
 })
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || port, function(){
     console.log("Server is running on port 3000");
 });
 
@@ -65,9 +66,13 @@ app.listen(3000, function(){
 
 
 
-// API Key
+// API Key1
 
 // c85c38d7b7794bd060962a03a41c8e9a-us21
+
+// API KEY2
+
+// 02e116c997ba04662afcd33d6c32c6af-us21
 
 // list Id
 
