@@ -6,7 +6,9 @@ const https = require("https");
 const app = express(); 
 const port = 3000;
 app.use(express.static("public"));
-app.use(bodyparser.urlencoded({urlencoded: true}));
+// app.use(bodyparser.urlencoded({urlencoded: true}));
+app.use(bodyparser.urlencoded({extended: true}));
+
 
 app.get("/", function(req, res){
     res.sendFile(__dirname+"/signup.html");
@@ -31,7 +33,7 @@ app.post("/", function(req, res){
     const url = 'https://us21.api.mailchimp.com/3.0/lists/1b4c29b01a';
     const options = {
         method : "post",
-        auth : "krishna:02e116c997ba04662afcd33d6c32c6af-us21"
+        auth : "krishna:e84d6d063da9a6cba6e199e572197c30-us21"
     };
 
     const request = https.request(url, options, function(response){
@@ -73,6 +75,10 @@ app.listen(process.env.PORT || port, function(){
 // API KEY2
 
 // 02e116c997ba04662afcd33d6c32c6af-us21
+
+// API KEY3
+
+// e84d6d063da9a6cba6e199e572197c30-us21
 
 // list Id
 
